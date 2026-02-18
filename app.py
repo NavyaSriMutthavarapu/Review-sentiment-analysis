@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-from text_preporcessing import clean
+from text_preporcessing import clean_text
 
 # Load model
 model = pickle.load(open("model.pkl", "rb"))
@@ -15,7 +15,7 @@ if st.button("Predict"):
     if user_input.strip() == "":
         st.warning("Please enter a review.")
     else:
-        cleaned = clean(user_input)
+        cleaned = clean_text(user_input)
         vectorized = vectorizer.transform([cleaned])
         prediction = model.predict(vectorized)
 
@@ -23,4 +23,3 @@ if st.button("Predict"):
             st.success("✅ Positive Review")
         else:
             st.error("❌ Negative Review")
-
