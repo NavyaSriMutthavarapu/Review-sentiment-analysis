@@ -1,6 +1,6 @@
 import streamlit as st
 import pickle
-from text_preporcessing import clean_text
+from text_vectorization import clean_text
 
 # Load model
 model = pickle.load(open("model.pkl", "rb"))
@@ -23,3 +23,4 @@ if st.button("Predict"):
             st.success("✅ Positive Review")
         else:
             st.error("❌ Negative Review")
+
