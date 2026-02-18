@@ -1,19 +1,20 @@
-import nltk
 import re
 import nltk
 from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-from nltk.tokenize import word_tokenize
-nltk.download('punkt')
-nltk.download('wordnet')
+
 nltk.download('stopwords')
-stop_words=set(stopwords.words('english'))
-def clean(doc):
-    doc=doc.lower()
-    doc=re.sub(r'[^a-zA-Z\s]','',doc)
-    doc=re.sub(r'\s+',' ',doc)
-    tokens=word_tokenize(doc)
-    filtered=[word for word in tokens if word not in stop_words]
-    lemmatizer=WordNetLemmatizer()
-    lemmatized=[lemmatizer.lemmatize(word) for word in filtered]
-    return " ".join(lemmatized)
+nltk.download('wordnet')
+
+stop_words = set(stopwords.words('english'))
+lemmatizer = WordNetLemmatizer()
+
+def clean_text(text):
+    text = text.lower()
+    text = re.sub(r'[^a-zA-Z\s]', '', text)
+    text = re.sub(r'\s+', ' ', text)
+
+    words = text.split()
+    words = [lemmatizer.lemmatize(word) for word in words if word not in stop_words]
+
+    return " ".join(words)
