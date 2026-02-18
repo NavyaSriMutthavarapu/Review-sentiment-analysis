@@ -9,7 +9,7 @@ nltk.download('wordnet')
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
-def clean_text(text):
+def clean(text):
     text = text.lower()
     text = re.sub(r'[^a-zA-Z\s]', '', text)
     text = re.sub(r'\s+', ' ', text)
@@ -18,3 +18,4 @@ def clean_text(text):
     words = [lemmatizer.lemmatize(word) for word in words if word not in stop_words]
 
     return " ".join(words)
+
