@@ -7,7 +7,7 @@ from nltk.tokenize import word_tokenize
 
 nltk.download('stopwords')
 nltk.download('wordnet')
-nltk.download('punkt')
+
 
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
@@ -22,5 +22,6 @@ def clean(doc):
     tokens = [lemmatizer.lemmatize(word) for word in tokens]
 
     return " ".join(tokens)
+
 
 
